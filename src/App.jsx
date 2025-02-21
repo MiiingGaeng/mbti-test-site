@@ -1,9 +1,12 @@
-import Router from "./shared/Router";
+import { AuthProvider } from "./context/AuthContext";
+import Router from "./shared/Router.jsx";
 
 const App = () => {
   return (
     <>
-      <Router />
+      <AuthProvider>
+        <Router />
+      </AuthProvider>
     </>
   );
 };
