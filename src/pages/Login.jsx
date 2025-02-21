@@ -13,9 +13,8 @@ const Login = () => {
   //-----navigate-----
   const navigate = useNavigate();
 
-  console.log("addTokenInLocal", addTokenInLocal);
   //로그인 확인 로직
-  const handleSubmit = async (e) => {
+  const handleLogIn = async (e) => {
     e.preventDefault();
 
     const userData = {
@@ -27,7 +26,6 @@ const Login = () => {
       const data = await login(userData);
       if (data.success) {
         const { accessToken } = data;
-        console.log("accessToken", accessToken);
         addTokenInLocal(accessToken);
         //로그인 성공 후 Home으로 이동
         navigate("/");
@@ -40,7 +38,7 @@ const Login = () => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleLogIn}>
         <p>ID</p>
         <input
           type="text"
