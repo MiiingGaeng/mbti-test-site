@@ -22,7 +22,7 @@ export const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={(isAuthenticated, addTokenInLocal, removeTokenInLocal)}
+      value={{ isAuthenticated, addTokenInLocal, removeTokenInLocal }}
     >
       {children}
     </AuthContext.Provider>
