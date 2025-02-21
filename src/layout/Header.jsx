@@ -18,7 +18,9 @@ const Header = () => {
 
   return (
     <div className="flex justify-between p-4 bg-indigo-400">
-      <h1>MBTI</h1>
+      <Link to="/">
+        <h1>MBTI</h1>
+      </Link>
       <div className="flex gap-4">
         {isAuthenticated ? (
           <Link to="/MyPage">
