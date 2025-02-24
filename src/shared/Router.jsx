@@ -7,6 +7,7 @@ import Layout from "../layout/Layout";
 import Test from "../pages/Test";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
+import TestResult from "../pages/TestResult";
 
 //로그인이 필요없는 페이지
 const PublicPage = ({ element: Element, ...rest }) => {
@@ -30,6 +31,7 @@ const Router = () => {
           <Route path="/signup" element={<PublicPage element={Signup} />} />
           <Route path="/mypage" element={<PrivtePage element={MyPage} />} />
           <Route path="/test" element={<Test />} />
+          <Route path="/results" element={<TestResult />} />
         </Route>
       </Routes>
     </BrowserRouter>
