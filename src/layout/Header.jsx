@@ -29,28 +29,48 @@ const Header = () => {
   };
 
   return (
-    <div className="flex justify-between p-4 bg-indigo-400">
+    <div className="w-screen min-h-[60px] flex justify-between items-center p-4 md:p-8 bg-indigo-400">
       <Link to="/">
-        <h1>MBTI</h1>
+        <h1 className="text-white text-2xl md:text-3xl font-bold transition-all ease-in cursor-pointer hover:text-indigo-800">
+          MBTI
+        </h1>
       </Link>
-      <div className="flex gap-4">
+      <div className="flex gap-8">
         {isAuthenticated ? (
-          <button type="button" onClick={handleMoveToMyPage}>
-            MyPage
+          <button
+            type="button"
+            onClick={handleMoveToMyPage}
+            className="text-white text-sm md:text-lg font-normal cursor-pointer transition-all ease-in hover:text-indigo-800"
+          >
+            PROFILE
           </button>
         ) : (
           <Link to="/signup">
-            <button type="button">Sign Up</button>
+            <button
+              type="button"
+              className="text-white text-sm md:text-lg font-normal transition-all ease-in cursor-pointer hover:text-indigo-800"
+            >
+              JOIN
+            </button>
           </Link>
         )}
         {/* 로그인 상태면 로그아웃 버튼, 아니면 로그인 버튼 */}
         {isAuthenticated ? (
-          <button type="button" onClick={handleLogOut}>
-            Logout
+          <button
+            type="button"
+            onClick={handleLogOut}
+            className="text-white text-sm md:text-lg font-normal transition-all ease-in cursor-pointer hover:text-indigo-800"
+          >
+            LOGOUT
           </button>
         ) : (
           <Link to="/login">
-            <button type="button">Login</button>
+            <button
+              type="button"
+              className="text-white text-sm md:text-lg font-normal transition-all ease-in cursor-pointer hover:text-indigo-800"
+            >
+              LOGIN
+            </button>
           </Link>
         )}
       </div>

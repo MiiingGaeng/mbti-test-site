@@ -21,7 +21,7 @@ export const getUserProfile = async (token) => {
 
 export const updateProfile = async (formData) => {
   const userToken = localStorage.getItem("accessToken");
-  const response = await authApi.patch("/profile`", formData, {
+  const response = await authApi.patch("/profile", formData, {
     headers: {
       Authorization: `Bearer ${userToken}`,
       "Content-Type": "multipart/form-data"

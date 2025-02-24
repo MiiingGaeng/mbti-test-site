@@ -22,7 +22,7 @@ const TestResult = () => {
   }
 
   return (
-    <div className="w-full min-h-screen flex flex-col justify-center items-center gap-4">
+    <div className="w-full min-h-auto flex flex-col justify-center items-center gap-10 p-10">
       {!resultList ? (
         <p>loading...</p>
       ) : (

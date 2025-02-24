@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { questions } from "../data/questions";
+import Button from "./common/Button";
 
 const TestForm = ({ onSubmit }) => {
   const [answers, setAnswers] = useState(
@@ -26,17 +27,17 @@ const TestForm = ({ onSubmit }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6 p-6 bg-white rounded-lg">
+    <form onSubmit={handleSubmit} className="flex flex-col">
       {questions.map((q, index) => (
-        <div key={q.id} className="mb-6">
-          <p className="font-semibold text-lg mb-3">{q.question}</p>
+        <div key={q.id} className="mb-4">
+          <p className="font-medium text-base lg:text-lg mb-3">{q.question}</p>
           <div className="space-y-2">
             {q.options.map((option, i) => (
               <label
                 key={i}
-                className={`block p-3 border rounded-lg cursor-pointer transition-colors duration-300 ${
-                  answers[index]?.answer === option ? "bg-gray-100" : ""
-                } hover:bg-gray-100`}
+                className={`text-sm block p-3 border rounded-lg cursor-pointer transition-colors duration-300 ${
+                  answers[index]?.answer === option ? "bg-indigo-200" : ""
+                } hover:bg-indigo-200`}
               >
                 <input
                   type="radio"
@@ -52,12 +53,11 @@ const TestForm = ({ onSubmit }) => {
           </div>
         </div>
       ))}
-      <button
-        type="submit"
-        className="w-full bg-primary-color text-white py-3 rounded-lg font-semibold hover:bg-primary-dark transition duration-300 hover:text-[#FF5A5F]"
-      >
-        제출하기
-      </button>
+      <div className="flex justify-center">
+        <Button className="self-center" type="submit">
+          제출하기
+        </Button>
+      </div>
     </form>
   );
 };
