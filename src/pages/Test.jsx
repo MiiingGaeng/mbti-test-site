@@ -1,19 +1,27 @@
 import { useState } from "react";
 import TestForm from "../components/TestForm";
 import { calculateMBTI, mbtiDescriptions } from "../utils/mbtiCalculator";
-import { createTestResult, getTestResults } from "../api/testResults";
+import { createTestResult } from "../api/testResults";
 import { useNavigate } from "react-router-dom";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { getUserProfile } from "../api/auth";
 import { useEffect } from "react";
 import { QUERY_KEYS } from "../constants/queryKeys";
+import useLoginStore from "../zustand/loginStore.js";
 
 const TestPage = () => {
   //-----navigate-----
   const navigate = useNavigate();
   //-----state-----
   const [result, setResult] = useState(null);
-  const [user, setUser] = useState(null);
+  // const [user, setUser] = useState(null);
+  //-----zustand-----
+  const { user, fetchUserData } = useLoginStore((state) => state);
+
+  //최초렌더링시 로그인된 유저 정보 가져오기
+  useEffect(() => {
+    fetchUserData();
+  }, []);
+
   //-----tanstack query : queryClient-----
   const queryClient = useQueryClient();
 
@@ -43,19 +51,7 @@ const TestPage = () => {
     setResult(mbtiResult);
   };
 
-  //최초렌더링시 로그인된 유저 정보 가져오기
-  useEffect(() => {
-    //-----유저 정보 가져오기-----
-    const fetchUserData = async () => {
-      const currentToken = localStorage.getItem("accessToken");
-      const userData = await getUserProfile(currentToken);
-
-      setUser(userData.data);
-    };
-
-    fetchUserData();
-  }, []);
-
+  //결과페이지로 이동
   const handleNavigateToResults = () => {
     navigate(`/results`);
   };

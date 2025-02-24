@@ -2,10 +2,22 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { mbtiDescriptions } from "../utils/mbtiCalculator";
 import { changeResultVisibility, deleteTestResult } from "../api/testResults";
 import { QUERY_KEYS } from "../constants/queryKeys";
+import useLoginStore from "../zustand/loginStore";
+import { useEffect } from "react";
 
 const ResultCard = ({ item }) => {
   //-----props-----
   const { result, nickname, userId, id } = item;
+  //-----zustand-----
+  const { user, fetchUserData } = useLoginStore((state) => state);
+
+  //최초렌더링시 유저정보 불러오기
+  useEffect(() => {
+    fetchUserData();
+  }, []);
+
+  console.log(user);
+
   //-----tanstack query : queryClient-----
   const queryClient = useQueryClient();
 
@@ -35,7 +47,7 @@ const ResultCard = ({ item }) => {
       <h4>{nickname}님의 결과</h4>
       <h4>{result}</h4>
       <p>{mbtiDescriptions[result]}</p>
-      {!!result && (
+      {user?.id === userId && (
         <div>
           <button
             onClick={() => {
