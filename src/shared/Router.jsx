@@ -10,14 +10,14 @@ import useLoginStore from "../zustand/loginStore";
 
 //로그인이 필요없는 페이지
 const PublicPage = ({ element: Element, ...rest }) => {
-  const { isAuthenticated } = useLoginStore();
+  const { isAuthenticated } = useLoginStore((state) => state);
   return !isAuthenticated ? <Element {...rest} /> : <Navigate to="/" />;
 };
 
 //로그인이 필요한 페이지
 const PrivitePage = ({ element: Element, ...rest }) => {
-  const { isAuthenticated } = useLoginStore();
-  return !isAuthenticated ? <Element {...rest} /> : <Navigate to="/login" />;
+  const { isAuthenticated } = useLoginStore((state) => state);
+  return isAuthenticated ? <Element {...rest} /> : <Navigate to="/login" />;
 };
 
 const Router = () => {
@@ -29,7 +29,7 @@ const Router = () => {
           <Route path="/login" element={<PublicPage element={Login} />} />
           <Route path="/signup" element={<PublicPage element={Signup} />} />
           <Route path="/mypage" element={<PrivitePage element={MyPage} />} />
-          <Route path="/test" element={<Test />} />
+          <Route path="/test" element={<PrivitePage element={Test} />} />
           <Route path="/results" element={<TestResult />} />
         </Route>
       </Routes>

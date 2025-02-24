@@ -13,7 +13,7 @@ const TestPage = () => {
   const navigate = useNavigate();
   //-----state-----
   const [result, setResult] = useState(null);
-  // const [user, setUser] = useState(null);
+
   //-----zustand-----
   const { user, fetchUserData } = useLoginStore((state) => state);
 

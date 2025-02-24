@@ -1,10 +1,9 @@
-import { useContext } from "react";
-import { AuthContext } from "../context/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
+import useLoginStore from "../zustand/loginStore";
 
 const Home = () => {
-  //-----context-----
-  const { isAuthenticated } = useContext(AuthContext);
+  //-----zustand-----
+  const { isAuthenticated } = useLoginStore((state) => state);
   //-----navigate-----
   const navigate = useNavigate();
 
