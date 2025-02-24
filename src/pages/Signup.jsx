@@ -51,9 +51,11 @@ const Signup = () => {
           <p className="text-lg text-indigo-800 font-bold">ID</p>
           <Input
             type="text"
-            placeholder="아이디를 입력해주세요"
+            placeholder="아이디(4~10자)를 입력해주세요"
             value={id}
             onChange={(e) => setId(e.target.value)}
+            minLength={4}
+            maxLength={10}
           />
         </label>
 
@@ -61,9 +63,11 @@ const Signup = () => {
           <p className="text-lg text-indigo-800 font-bold">PW</p>
           <Input
             type="password"
-            placeholder="비밀번호를 입력해주세요"
+            placeholder="비밀번호(4~10자)를 입력해주세요"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            minLength={4}
+            maxLength={10}
           />
         </label>
 
