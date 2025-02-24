@@ -1,15 +1,14 @@
-import { useContext } from "react";
 import { useState } from "react";
-import { AuthContext } from "../context/AuthContext.jsx";
 import { login } from "../api/auth";
 import { useNavigate } from "react-router-dom";
+import useLoginStore from "../zustand/loginStore.js";
 
 const Login = () => {
   //-----input state-----
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
-  //-----context-----
-  const { addTokenInLocal } = useContext(AuthContext);
+  //-----zustand : 토큰 추가 로직-----
+  const { addTokenInLocal } = useLoginStore();
   //-----navigate-----
   const navigate = useNavigate();
 
@@ -27,6 +26,8 @@ const Login = () => {
       if (data.success) {
         const { accessToken } = data;
         addTokenInLocal(accessToken);
+        //로그인 알람
+        alert("로그인에 성공하였습니다.");
         //로그인 성공 후 Home으로 이동
         navigate("/");
       }
