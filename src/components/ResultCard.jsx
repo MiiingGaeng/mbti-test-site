@@ -5,12 +5,15 @@ import { QUERY_KEYS } from "../constants/queryKeys";
 import useLoginStore from "../zustand/loginStore";
 import { useEffect } from "react";
 import Button from "./common/Button";
+import { useState } from "react";
 
 const ResultCard = ({ item }) => {
   //-----props-----
-  const { result, nickname, userId, id } = item;
+  const { result, nickname, userId, id, visibility } = item;
   //-----zustand-----
   const { user, fetchUserData } = useLoginStore((state) => state);
+  //-----state-----
+  const [currentVisibility, setCurrentVisibility] = useState(visibility);
 
   //최초렌더링시 유저정보 불러오기
   useEffect(() => {
@@ -51,9 +54,10 @@ const ResultCard = ({ item }) => {
           <Button
             onClick={() => {
               changeVisibilityMutaion.mutate(item);
+              setCurrentVisibility((prev) => !prev);
             }}
           >
-            숨기기
+            {currentVisibility ? "숨기기" : "숨김해제"}
           </Button>
           <Button
             onClick={() => {
