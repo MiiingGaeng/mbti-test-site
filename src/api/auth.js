@@ -1,19 +1,17 @@
-import axios from "axios";
-
-const API_URL = "https://www.nbcamp-react-auth.link";
+import { authApi } from "./axios";
 
 export const register = async (userData) => {
-  const response = await axios.post(`${API_URL}/register`, userData);
+  const response = await authApi.post("/register", userData);
   return response.data;
 };
 
 export const login = async (userData) => {
-  const response = await axios.post(`${API_URL}/login`, userData);
+  const response = await authApi.post("/login", userData);
   return response.data;
 };
 
 export const getUserProfile = async (token) => {
-  const response = await axios.get(`${API_URL}/user`, {
+  const response = await authApi.get("/user", {
     headers: {
       Authorization: `Bearer ${token}`
     }
@@ -23,7 +21,7 @@ export const getUserProfile = async (token) => {
 
 export const updateProfile = async (formData) => {
   const userToken = localStorage.getItem("accessToken");
-  const response = await axios.patch(`${API_URL}/profile`, formData, {
+  const response = await authApi.patch("/profile`", formData, {
     headers: {
       Authorization: `Bearer ${userToken}`,
       "Content-Type": "multipart/form-data"

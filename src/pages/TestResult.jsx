@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import {
   deleteTestResult,
   getTestResults,
-  updateTestResultVisibility
+  changeResultVisibility
 } from "../api/testResults";
 import { mbtiDescriptions } from "../utils/mbtiCalculator";
 import { getUserProfile } from "../api/auth";
@@ -50,7 +50,7 @@ const TestResult = () => {
     const myResult = resultList.find((result) => result.userId === user?.id);
 
     try {
-      await updateTestResultVisibility(myResult.id, !myResult.visibility);
+      await changeResultVisibility(myResult.id, !myResult.visibility);
       setResultList((prevResults) =>
         prevResults.map((result) => result.visibility)
       );
