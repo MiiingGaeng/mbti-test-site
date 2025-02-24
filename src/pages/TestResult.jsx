@@ -26,9 +26,11 @@ const TestResult = () => {
       {!resultList ? (
         <p>loading...</p>
       ) : (
-        resultList.map((result) => {
-          return <ResultCard key={result.id} result={result} />;
-        })
+        resultList
+          .filter((item) => item.visibility)
+          .map((item) => {
+            return <ResultCard key={item.id} item={item} />;
+          })
       )}
     </div>
   );
