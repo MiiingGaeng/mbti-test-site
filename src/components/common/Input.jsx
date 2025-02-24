@@ -1,4 +1,11 @@
-const Input = ({ type, placeholder, value, onChange }) => {
+const Input = ({
+  type,
+  placeholder,
+  value,
+  onChange,
+  minLength,
+  maxLength
+}) => {
   return (
     <input
       className="w-5/6 rounded-lg px-4 text-sm"
@@ -6,6 +13,8 @@ const Input = ({ type, placeholder, value, onChange }) => {
       placeholder={placeholder}
       value={value}
       onChange={onChange}
+      minLength={minLength}
+      maxLength={maxLength}
     />
   );
 };
