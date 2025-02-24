@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
+import { getUserProfile } from "../api/auth";
 
 const Header = () => {
   //-----context-----
@@ -16,6 +17,14 @@ const Header = () => {
     navigate("/");
   };
 
+  const handleMoveToMyPage = async () => {
+    const currentToken = localStorage.getItem("accessToken");
+    const userData = await getUserProfile(currentToken);
+    const { id } = userData.data;
+
+    navigate(`/mypage?user_id=${id}`);
+  };
+
   return (
     <div className="flex justify-between p-4 bg-indigo-400">
       <Link to="/">
@@ -23,9 +32,9 @@ const Header = () => {
       </Link>
       <div className="flex gap-4">
         {isAuthenticated ? (
-          <Link to="/MyPage">
-            <button type="button">MyPage</button>
-          </Link>
+          <button type="button" onClick={handleMoveToMyPage}>
+            MyPage
+          </button>
         ) : (
           <Link to="/signup">
             <button type="button">Sign Up</button>
