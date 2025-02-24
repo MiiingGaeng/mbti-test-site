@@ -4,7 +4,7 @@ import { QUERY_KEYS } from "../constants/queryKeys";
 import ResultCard from "../components/ResultCard";
 
 const TestResult = () => {
-  //-----useQuery-----
+  //-----tanstack query : useQuery-----
   const {
     data: resultList,
     isPending: isResultListPending,
