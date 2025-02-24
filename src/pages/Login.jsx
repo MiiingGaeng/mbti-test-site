@@ -2,8 +2,8 @@ import { useState } from "react";
 import { login } from "../api/auth";
 import { Link, useNavigate } from "react-router-dom";
 import useLoginStore from "../zustand/loginStore.js";
-import Button from "../components/Button.jsx";
-import Input from "../components/Input.jsx";
+import Button from "../components/common/Button.jsx";
+import Input from "../components/common/Input.jsx";
 
 const Login = () => {
   //-----input state-----

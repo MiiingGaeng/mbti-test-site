@@ -4,7 +4,7 @@ import { changeResultVisibility, deleteTestResult } from "../api/testResults";
 import { QUERY_KEYS } from "../constants/queryKeys";
 import useLoginStore from "../zustand/loginStore";
 import { useEffect } from "react";
-import Button from "./Button";
+import Button from "./common/Button";
 
 const ResultCard = ({ item }) => {
   //-----props-----

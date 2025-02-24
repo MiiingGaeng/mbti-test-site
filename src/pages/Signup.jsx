@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { register } from "../api/auth";
-import Input from "../components/Input";
-import Button from "../components/Button";
+import Input from "../components/common/Input";
+import Button from "../components/common/Button";
 
 const Signup = () => {
   //-----input state-----

@@ -7,7 +7,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useEffect } from "react";
 import { QUERY_KEYS } from "../constants/queryKeys";
 import useLoginStore from "../zustand/loginStore.js";
-import Button from "../components/Button.jsx";
+import Button from "../components/common/Button.jsx";
 
 const TestPage = () => {
   //-----navigate-----

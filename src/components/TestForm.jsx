@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { questions } from "../data/questions";
-import Button from "./Button";
+import Button from "./common/Button";
 
 const TestForm = ({ onSubmit }) => {
   const [answers, setAnswers] = useState(

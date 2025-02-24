@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import useLoginStore from "../zustand/loginStore";
-import Button from "../components/Button";
+import Button from "../components/common/Button";
 
 const Home = () => {
   //-----zustand-----
