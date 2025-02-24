@@ -3,8 +3,10 @@ import TestForm from "../components/TestForm";
 import { calculateMBTI, mbtiDescriptions } from "../utils/mbtiCalculator";
 import { createTestResult, getTestResults } from "../api/testResults";
 import { useNavigate } from "react-router-dom";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { getUserProfile } from "../api/auth";
 import { useEffect } from "react";
+import { QUERY_KEYS } from "../constants/queryKeys";
 
 const TestPage = () => {
   //-----navigate-----
@@ -12,7 +14,36 @@ const TestPage = () => {
   //-----state-----
   const [result, setResult] = useState(null);
   const [user, setUser] = useState(null);
+  //-----tanstack query : queryClient-----
+  const queryClient = useQueryClient();
 
+  //-----tanstack query : useMutation-----
+  //테스트 결과 추가 기능
+  const addResultMutation = useMutation({
+    mutationFn: createTestResult,
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: [QUERY_KEYS.RESULTS]
+      });
+    }
+  });
+
+  const handleTestSubmit = async (answers) => {
+    const mbtiResult = calculateMBTI(answers);
+
+    addResultMutation.mutate({
+      nickname: user.nickname,
+      result: mbtiResult,
+      visibility: true,
+      date: new Date().toString(),
+      userId: user.id
+    });
+
+    //UI 바꾸기 위한 setter
+    setResult(mbtiResult);
+  };
+
+  //최초렌더링시 로그인된 유저 정보 가져오기
   useEffect(() => {
     //-----유저 정보 가져오기-----
     const fetchUserData = async () => {
@@ -24,39 +55,6 @@ const TestPage = () => {
 
     fetchUserData();
   }, []);
-
-  //-----test 결과 submit 함수-----
-  const handleTestSubmit = async (answers) => {
-    const mbtiResult = calculateMBTI(answers);
-
-    const newTestResult = {
-      id: crypto.randomUUID(),
-      nickname: user?.nickname,
-      result: mbtiResult,
-      visibility: true,
-      date: new Date().toString(),
-      userId: user.id
-    };
-
-    //예외처리
-    const testResults = await getTestResults();
-    if (testResults.some((result) => result.userId === user.id)) {
-      alert(
-        "이미 테스트 결과가 존재합니다. 결과는 마이페이지에서 확인해주세요!"
-      );
-      return navigate(`/mypage?user_id=${user.id}`);
-    }
-
-    try {
-      const data = await createTestResult(newTestResult);
-      if (data) {
-        setResult(data.result);
-      }
-    } catch (error) {
-      console.error("테스트 전송 실패 : ", error);
-      alert("테스트 결과 전송에 실패하였습니다. 다시 시도해주세요.");
-    }
-  };
 
   const handleNavigateToResults = () => {
     navigate(`/results`);
