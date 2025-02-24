@@ -11,11 +11,13 @@ export const createTestResult = async (resultData) => {
 };
 
 export const deleteTestResult = async (id) => {
-  const response = await jsonApi.delete(`"/testResults"/${id}`);
+  const response = await jsonApi.delete(`/testResults/${id}`);
   return response.data;
 };
 
-export const changeResultVisibility = async (id, visibility) => {
-  const response = await jsonApi.patch(`"/testResults"/${id}`, { visibility });
+export const changeResultVisibility = async (item) => {
+  const response = await jsonApi.patch(`/testResults/${item.id}`, {
+    visibility: !item.visibility
+  });
   return response.data;
 };
