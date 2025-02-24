@@ -4,6 +4,7 @@ import { changeResultVisibility, deleteTestResult } from "../api/testResults";
 import { QUERY_KEYS } from "../constants/queryKeys";
 import useLoginStore from "../zustand/loginStore";
 import { useEffect } from "react";
+import Button from "./Button";
 
 const ResultCard = ({ item }) => {
   //-----props-----
@@ -41,26 +42,26 @@ const ResultCard = ({ item }) => {
   });
 
   return (
-    <div>
-      <h4>{nickname}님의 결과</h4>
-      <h4>{result}</h4>
-      <p>{mbtiDescriptions[result]}</p>
+    <div className="w-5/6 lg:w-1/2 bg-indigo-100 flex flex-col justify-center items-center rounded-3xl p-10 gap-5">
+      <h4 className="text-base">{nickname}님의 결과</h4>
+      <h4 className="text-xl font-bold text-indigo-800">{result}</h4>
+      <p className="text-sm">{mbtiDescriptions[result]}</p>
       {user?.id === userId && (
-        <div>
-          <button
+        <div className="flex gap-4">
+          <Button
             onClick={() => {
               changeVisibilityMutaion.mutate(item);
             }}
           >
             숨기기
-          </button>
-          <button
+          </Button>
+          <Button
             onClick={() => {
               deleteResultMutation.mutate(id);
             }}
           >
             삭제
-          </button>
+          </Button>
         </div>
       )}
     </div>
