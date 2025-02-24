@@ -1,16 +1,19 @@
-import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "../context/AuthContext";
 import { getUserProfile } from "../api/auth";
+import useLoginStore from "../zustand/loginStore";
 
 const Header = () => {
-  //-----context-----
-  const { isAuthenticated, removeTokenInLocal } = useContext(AuthContext);
+  //-----zustand-----
+  const { isAuthenticated, removeTokenInLocal } = useLoginStore(
+    (state) => state
+  );
   //-----navigate-----
   const navigate = useNavigate();
 
   //logout 로직
   const handleLogOut = () => {
+    //로그아웃 알람
+    alert("로그아웃 되었습니다.");
     //accessToken 삭제
     removeTokenInLocal();
     //홈 화면으로 리다이렉션
