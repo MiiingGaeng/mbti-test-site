@@ -34,7 +34,7 @@ const TestPage = () => {
       nickname: user?.nickname,
       result: mbtiResult,
       visibility: true,
-      date: Date.now(),
+      date: new Date().toString(),
       userId: user.id
     };
 
@@ -59,7 +59,7 @@ const TestPage = () => {
   };
 
   const handleNavigateToResults = () => {
-    navigate(`/results?user_id=${user.id}`);
+    navigate(`/results`);
   };
 
   return (
