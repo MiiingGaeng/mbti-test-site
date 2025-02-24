@@ -1,12 +1,20 @@
 {
   "testResults": [
     {
-      "id": "9e2d5477-9fda-458c-b7f2-f5c02a61955b",
+      "id": "9f71",
       "nickname": "testtest12345",
-      "result": "ESTP",
+      "result": "ENTP",
       "visibility": true,
-      "date": 1740319460539,
+      "date": "Mon Feb 24 2025 16:04:06 GMT+0900 (Korean Standard Time)",
       "userId": "testtest12345"
+    },
+    {
+      "id": "6887",
+      "nickname": "김테스트",
+      "result": "INFP",
+      "visibility": true,
+      "date": "Mon Feb 24 2025 16:55:04 GMT+0900 (Korean Standard Time)",
+      "userId": "tteesstt"
     }
   ]
 }

@@ -5,18 +5,18 @@ import Signup from "../pages/Signup";
 import MyPage from "../pages/MyPage";
 import Layout from "../layout/Layout";
 import Test from "../pages/Test";
-import { useContext } from "react";
-import { AuthContext } from "../context/AuthContext";
+import TestResult from "../pages/TestResult";
+import useLoginStore from "../zustand/loginStore";
 
 //로그인이 필요없는 페이지
 const PublicPage = ({ element: Element, ...rest }) => {
-  const { isAuthenticated } = useContext(AuthContext);
+  const { isAuthenticated } = useLoginStore((state) => state);
   return !isAuthenticated ? <Element {...rest} /> : <Navigate to="/" />;
 };
 
 //로그인이 필요한 페이지
-const PrivtePage = ({ element: Element, ...rest }) => {
-  const { isAuthenticated } = useContext(AuthContext);
+const PrivitePage = ({ element: Element, ...rest }) => {
+  const { isAuthenticated } = useLoginStore((state) => state);
   return isAuthenticated ? <Element {...rest} /> : <Navigate to="/login" />;
 };
 
@@ -28,8 +28,9 @@ const Router = () => {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<PublicPage element={Login} />} />
           <Route path="/signup" element={<PublicPage element={Signup} />} />
-          <Route path="/mypage" element={<PrivtePage element={MyPage} />} />
-          <Route path="/test" element={<Test />} />
+          <Route path="/mypage" element={<PrivitePage element={MyPage} />} />
+          <Route path="/test" element={<PrivitePage element={Test} />} />
+          <Route path="/results" element={<TestResult />} />
         </Route>
       </Routes>
     </BrowserRouter>

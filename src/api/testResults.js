@@ -1,23 +1,23 @@
-import axios from "axios";
-
-const API_URL = "http://localhost:4000/testResults";
+import { jsonApi } from "./axios";
 
 export const getTestResults = async () => {
-  const response = await axios.get(API_URL);
+  const response = await jsonApi.get("/testResults");
   return response.data;
 };
 
 export const createTestResult = async (resultData) => {
-  const response = await axios.post(API_URL, resultData);
+  const response = await jsonApi.post("/testResults", resultData);
   return response.data;
 };
 
 export const deleteTestResult = async (id) => {
-  const response = await axios.delete(`${API_URL}/${id}`);
+  const response = await jsonApi.delete(`/testResults/${id}`);
   return response.data;
 };
 
-export const updateTestResultVisibility = async (id, visibility) => {
-  const response = await axios.patch(`${API_URL}/${id}`, { visibility });
+export const changeResultVisibility = async (item) => {
+  const response = await jsonApi.patch(`/testResults/${item.id}`, {
+    visibility: !item.visibility
+  });
   return response.data;
 };
