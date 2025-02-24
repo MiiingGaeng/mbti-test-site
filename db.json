@@ -1,12 +1,20 @@
 {
   "testResults": [
     {
-      "id": "9e2d5477-9fda-458c-b7f2-f5c02a61955b",
+      "id": "f68d0261-6d0a-4342-9b56-334e2229240f",
       "nickname": "testtest12345",
-      "result": "ESTP",
+      "result": "ESTJ",
       "visibility": true,
-      "date": 1740319460539,
+      "date": "Mon Feb 24 2025 10:38:03 GMT+0900 (Korean Standard Time)",
       "userId": "testtest12345"
+    },
+    {
+      "id": "8b574f3f-cc5c-4a08-80df-e48c26de9475",
+      "nickname": "김테스트",
+      "result": "ENFP",
+      "visibility": true,
+      "date": "Mon Feb 24 2025 10:57:19 GMT+0900 (Korean Standard Time)",
+      "userId": "tteesstt"
     }
   ]
 }
