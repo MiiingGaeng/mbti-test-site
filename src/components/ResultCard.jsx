@@ -16,8 +16,6 @@ const ResultCard = ({ item }) => {
     fetchUserData();
   }, []);
 
-  console.log(user);
-
   //-----tanstack query : queryClient-----
   const queryClient = useQueryClient();
 
