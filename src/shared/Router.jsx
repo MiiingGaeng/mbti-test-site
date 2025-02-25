@@ -7,6 +7,7 @@ import Layout from "../layout/Layout";
 import Test from "../pages/Test";
 import TestResult from "../pages/TestResult";
 import useLoginStore from "../zustand/loginStore";
+import MyResult from "../pages/MyResult";
 
 //로그인이 필요없는 페이지
 const PublicPage = ({ element: Element, ...rest }) => {
@@ -30,7 +31,10 @@ const Router = () => {
           <Route path="/signup" element={<PublicPage element={Signup} />} />
           <Route path="/mypage" element={<PrivitePage element={MyPage} />} />
           <Route path="/test" element={<PrivitePage element={Test} />} />
+          <Route path="/myresult" element={<MyResult />} />
           <Route path="/results" element={<TestResult />} />
+          {/* 예외처리 */}
+          <Route path="/*" element={<Home />} />
         </Route>
       </Routes>
     </BrowserRouter>

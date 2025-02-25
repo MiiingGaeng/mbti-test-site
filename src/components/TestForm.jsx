@@ -1,11 +1,19 @@
 import { useState } from "react";
 import { questions } from "../data/questions";
 import Button from "./common/Button";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+import useLoginStore from "../zustand/loginStore";
 
 const TestForm = ({ onSubmit }) => {
+  //-----state-----
   const [answers, setAnswers] = useState(
     Array(questions.length).fill({ type: "", answer: "" })
   );
+  //-----navigate-----
+  const navigate = useNavigate();
+  //-----zustand-----
+  const { user } = useLoginStore((state) => state);
 
   const handleChange = (index, answer) => {
     const newAnswers = [...answers];
@@ -19,11 +27,14 @@ const TestForm = ({ onSubmit }) => {
     //예외처리: 아무 답변도 하지 않거나 빼먹었고 확인버튼 누를 떄
     const isBlank = answers.some((answer) => !answer.answer);
     if (isBlank) {
-      alert("테스트를 모두 완료해주세요!");
+      toast.warn("테스트를 모두 완료해주세요!");
       return;
     }
 
+    //서버에 데이터 전송
     onSubmit(answers);
+    //결과 페이지 이동
+    navigate(`/myresult?id=${user.id}`);
   };
 
   return (

@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { register } from "../api/auth";
 import Input from "../components/common/Input";
 import Button from "../components/common/Button";
+import { toast } from "react-toastify";
 
 const Signup = () => {
   //-----input state-----
@@ -26,15 +27,15 @@ const Signup = () => {
       console.log("data", data);
       if (data.success) {
         //회원가입 성공 알람
-        alert("가입해주셔서 감사합니다!");
+        toast.success("가입해주셔서 감사합니다!");
         //회원가입 성공 => 로그인 페이지로 이동
         navigate("/login");
       } else {
-        alert("회원가입에 실패하였습니다. 다시 시도해주세요.");
+        toast.error("회원가입에 실패하였습니다. 다시 시도해주세요.");
       }
     } catch (error) {
       console.error("회원가입 실패 : ", error.response.data.message);
-      alert("회원가입에 실패하였습니다. 다시 시도해주세요.");
+      toast.error("회원가입에 실패하였습니다. 다시 시도해주세요.");
     }
   };
 

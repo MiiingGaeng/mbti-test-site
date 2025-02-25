@@ -8,6 +8,7 @@ import { useQuery } from "@tanstack/react-query";
 import { QUERY_KEYS } from "../constants/queryKeys";
 import { getTestResults } from "../api/testResults";
 import ResultCard from "../components/ResultCard";
+import { toast } from "react-toastify";
 
 const MyPage = () => {
   //-----zustand-----
@@ -29,14 +30,14 @@ const MyPage = () => {
 
     try {
       //닉네임 변경 알림
-      alert("닉네임이 변경되었습니다.");
+      toast.success("닉네임이 변경되었습니다.");
       //서버 반영
       updateProfile(formData);
       //데이터 다시 불러오기
       fetchUserData();
     } catch (error) {
       console.error("닉네임 변경 실패 : ", error);
-      alert("닉네임 변경에 실패하였습니다. 다시 시도해주세요.");
+      toast.error("닉네임 변경에 실패하였습니다. 다시 시도해주세요.");
     }
   };
 

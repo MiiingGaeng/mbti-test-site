@@ -50,7 +50,7 @@ const ResultCard = ({ item }) => {
       <h4 className="text-xl font-bold text-indigo-800">{result}</h4>
       <p className="text-sm">{mbtiDescriptions[result]}</p>
       {user?.id === userId && (
-        <div className="flex gap-4">
+        <div className="flex flex-wrap gap-4 justify-center">
           <Button
             onClick={() => {
               changeVisibilityMutaion.mutate(item);

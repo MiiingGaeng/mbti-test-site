@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import useLoginStore from "../zustand/loginStore.js";
 import Button from "../components/common/Button.jsx";
 import Input from "../components/common/Input.jsx";
+import { toast } from "react-toastify";
 
 const Login = () => {
   //-----input state-----
@@ -29,13 +30,13 @@ const Login = () => {
         const { accessToken } = data;
         addTokenInLocal(accessToken);
         //로그인 알람
-        alert("로그인에 성공하였습니다.");
+        toast.success("로그인에 성공하였습니다.");
         //로그인 성공 후 Home으로 이동
         navigate("/");
       }
     } catch (error) {
       console.error("로그인 실패 : ", error);
-      alert("로그인에 실패하였습니다. 다시 시도해주세요.");
+      toast.error("로그인에 실패하였습니다. 다시 시도해주세요.");
     }
   };
 

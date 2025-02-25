@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import useLoginStore from "../zustand/loginStore";
 import Button from "../components/common/Button";
+import { toast } from "react-toastify";
 
 const Home = () => {
   //-----zustand-----
@@ -16,7 +17,7 @@ const Home = () => {
     }
     //로그인 안되어있을 때 => Login Page로 이동
     else {
-      alert("로그인이 필요한 서비스입니다.");
+      toast.warn("로그인이 필요한 서비스입니다.");
       navigate("/login");
     }
   };
