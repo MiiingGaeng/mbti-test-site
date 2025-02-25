@@ -5,5 +5,5 @@ export const authApi = axios.create({
 });
 
 export const jsonApi = axios.create({
-  baseURL: "http://localhost:4000"
+  baseURL: "https://free-descriptive-innovation.glitch.me"
 });
