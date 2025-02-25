@@ -35,11 +35,13 @@ const MyResult = () => {
   });
 
   if (isResultListPending) {
-    return <p>is Loading...</p>;
+    return <p className="text-lg text-indigo-800 text-center">is Loading...</p>;
   }
 
   if (isResultListError) {
-    return <p>There is an error</p>;
+    return (
+      <p className="text-lg text-indigo-800 text-center">There is an error</p>
+    );
   }
 
   const myResult = resultList.findLast((item) => item.userId === userId);
