@@ -7,47 +7,47 @@ Vite + React를 사용한 프로젝트로, MBTI 테스트를 진행하고 결과
 ## 프로젝트 미리보기🩵
 
 - Home
-  ![alt text](홈.png)
+  <img src="./public/images/홈.png" width="1440px">
 
 - Test
-  ![alt text](테스트.png)
+  <img src="./public/images/테스트.png" width="1440px">
 
 - MyPage
-  ![alt text](마이페이지.png)
+  <img src="./public/images/마이페이지.png" width="1440px">
 
 - Results
-  ![alt text](결과.png)
+  <img src="./public/images/결과.png" width="1440px">
 
 - MyResult
 
-| ![alt text](결과페이지-공유하기.png) | ![alt text](결과페이지-테스트하기.png) |
-| ----------------------------------------------- | ------------------------------------------------- |
+| <img src="./public/images/결과페이지-공유하기.png" width="720px"> 본인 계정이면 공유하기 버튼 표시 | <img src="./public/images/결과페이지-테스트하기.png" width="690px"> 로그아웃/타 계정이면 테스트 버튼 표시 |
+| -------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
 
 - SignUp / Login
 
-| ![alt text](가입.png) | ![alt text](로그인.png) |
-| ------------------------ | --------------------------- |
+| <img src="./public/images/가입.png" width="700px"> | <img src="./public/images/로그인.png" width="700px"> |
+| -------------------------------------------------- | ---------------------------------------------------- |
 
 - 반응형
 
 <table>
   <tr>
     <td align="center">
-      <img src="반응형홈.png" width="200px"><br>
+      <img src="./public/images/반응형홈.png" width="200px"><br>
       <strong>반응형 Home</strong>
     </td>
     <td align="center">
-      <img src="반응형마이페이지.png" width="200px"><br>
+      <img src="./public/images/반응형마이페이지.png" width="200px"><br>
       <strong>반응형 Mypage</strong>
     </td>
   </tr>
   <tr>
     <td align="center">
-      <img src="반응형결과.png" width="200px"><br>
+      <img src="./public/images/반응형테스트.png" width="200px"><br>
       <strong>반응형 Test</strong>
     </td>
     <td align="center">
-      <img src="반응형테스트.png" width="200px"><br>
+      <img src="./public/images/반응형결과.png" width="200px"><br>
       <strong>반응형 Results</strong>
     </td>
   </tr>
