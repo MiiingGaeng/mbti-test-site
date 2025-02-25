@@ -33,6 +33,8 @@ const Router = () => {
           <Route path="/test" element={<PrivitePage element={Test} />} />
           <Route path="/myresult" element={<MyResult />} />
           <Route path="/results" element={<TestResult />} />
+          {/* 예외처리 */}
+          <Route path="/*" element={<Home />} />
         </Route>
       </Routes>
     </BrowserRouter>
