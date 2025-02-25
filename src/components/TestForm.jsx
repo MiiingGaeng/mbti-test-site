@@ -2,11 +2,18 @@ import { useState } from "react";
 import { questions } from "../data/questions";
 import Button from "./common/Button";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+import useLoginStore from "../zustand/loginStore";
 
 const TestForm = ({ onSubmit }) => {
+  //-----state-----
   const [answers, setAnswers] = useState(
     Array(questions.length).fill({ type: "", answer: "" })
   );
+  //-----navigate-----
+  const navigate = useNavigate();
+  //-----zustand-----
+  const { user } = useLoginStore((state) => state);
 
   const handleChange = (index, answer) => {
     const newAnswers = [...answers];
@@ -24,7 +31,10 @@ const TestForm = ({ onSubmit }) => {
       return;
     }
 
+    //서버에 데이터 전송
     onSubmit(answers);
+    //결과 페이지 이동
+    navigate(`/myresult?id=${user.id}`);
   };
 
   return (
