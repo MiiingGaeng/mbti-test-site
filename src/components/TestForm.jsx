@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { questions } from "../data/questions";
 import Button from "./common/Button";
+import { toast } from "react-toastify";
 
 const TestForm = ({ onSubmit }) => {
   const [answers, setAnswers] = useState(
@@ -19,7 +20,7 @@ const TestForm = ({ onSubmit }) => {
     //예외처리: 아무 답변도 하지 않거나 빼먹었고 확인버튼 누를 떄
     const isBlank = answers.some((answer) => !answer.answer);
     if (isBlank) {
-      alert("테스트를 모두 완료해주세요!");
+      toast.warn("테스트를 모두 완료해주세요!");
       return;
     }
 

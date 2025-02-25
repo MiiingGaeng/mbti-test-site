@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { getUserProfile } from "../api/auth";
 import useLoginStore from "../zustand/loginStore";
+import { toast } from "react-toastify";
 
 const Header = () => {
   //-----zustand-----
@@ -13,7 +14,7 @@ const Header = () => {
   //logout 로직
   const handleLogOut = () => {
     //로그아웃 알람
-    alert("로그아웃 되었습니다.");
+    toast.success("로그아웃 되었습니다.");
     //accessToken 삭제
     removeTokenInLocal();
     //홈 화면으로 리다이렉션
