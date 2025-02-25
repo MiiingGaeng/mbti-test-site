@@ -63,6 +63,46 @@
       "visibility": true,
       "date": "Mon Feb 24 2025 21:53:14 GMT+0900 (Korean Standard Time)",
       "userId": "tttesttt"
+    },
+    {
+      "id": "f724",
+      "nickname": "강문대",
+      "result": "ISFJ",
+      "visibility": true,
+      "date": "Mon Feb 24 2025 22:59:36 GMT+0900 (Korean Standard Time)",
+      "userId": "tttesttt"
+    },
+    {
+      "id": "aa99",
+      "nickname": "강문대문대",
+      "result": "ISFP",
+      "visibility": true,
+      "date": "Mon Feb 24 2025 23:00:51 GMT+0900 (Korean Standard Time)",
+      "userId": "tttesttt"
+    },
+    {
+      "id": "ed6d",
+      "nickname": "싹싹김치",
+      "result": "INTJ",
+      "visibility": true,
+      "date": "Tue Feb 25 2025 09:36:58 GMT+0900 (Korean Standard Time)",
+      "userId": "tttest"
+    },
+    {
+      "id": "4172",
+      "nickname": "싹싹김치",
+      "result": "ENTP",
+      "visibility": true,
+      "date": "Tue Feb 25 2025 09:59:41 GMT+0900 (Korean Standard Time)",
+      "userId": "tttest"
+    },
+    {
+      "id": "3897",
+      "nickname": "싹싹김치",
+      "result": "ENFP",
+      "visibility": true,
+      "date": "Tue Feb 25 2025 10:24:36 GMT+0900 (Korean Standard Time)",
+      "userId": "tttest"
     }
   ]
 }
